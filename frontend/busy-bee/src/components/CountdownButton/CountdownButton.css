@@ -1,0 +1,28 @@
+.countdown-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.glow-green {
+  background-color: #62db36;
+  box-shadow: 0 0 10px 5px rgba(50, 255, 0, 0.7);
+}
+
+.glow-yellow {
+  background-color: #dbc536;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 0, 0.7);
+}
+
+.glow-orange {
+  background-color: #ffa500;
+  box-shadow: 0 0 10px 5px rgba(255, 165, 0, 0.7);
+}
+
+.glow-red {
+  background-color: #ff0000;
+  box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.7);
+}
