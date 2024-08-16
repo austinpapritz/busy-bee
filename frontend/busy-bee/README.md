@@ -1,8 +1,7 @@
-# React + Vite
+#
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Flower - press center to start, then need to manage countdowns around it that look like pedals
 
-Currently, two official plugins are available:
+Nectar - press center to start and then play Simon says
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Egg hatch - OSU-like game to hatch bee. Bee can then be assigned to the center of another module to automate it.
