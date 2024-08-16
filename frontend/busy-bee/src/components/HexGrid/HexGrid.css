@@ -1,0 +1,20 @@
+/* HexGrid.css */
+.hex-grid {
+  position: relative;
+  padding: 20px;
+}
+
+.hex {
+  position: absolute;
+  color: #fff;
+  background-color: #757373;
+  clip-path: polygon(27% 0%, 73% 2%, 100% 50%, 75% 100%, 25% 100%, 2% 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hex:hover {
+  background-color: gold;
+  box-shadow: 0 0 10px 5px rgba(255, 215, 0, 0.7);
+}
