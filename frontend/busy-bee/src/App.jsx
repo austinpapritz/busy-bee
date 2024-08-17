@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <div className="app">
-        <HexGrid radius={1} />
+        <HexGrid radius={2} />
       </div>
     </>
   );

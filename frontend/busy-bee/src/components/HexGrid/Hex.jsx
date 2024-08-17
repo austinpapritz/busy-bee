@@ -37,7 +37,7 @@ function generateRandomHexPolygon() {
     [2, 50],  // middle-left
   ];
 
-  const variation = 2; // percentage variation
+  const variation = 1.2; // percentage variation
 
   const randomize = (value) => {
     const offset = Math.random() * variation * 2 - variation; // generates a number between -2 and +2
