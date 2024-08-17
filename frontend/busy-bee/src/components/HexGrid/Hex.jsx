@@ -1,7 +1,7 @@
 import './HexGrid.css';
 import PropTypes from 'prop-types';
 
-function Hex({ q, r, content }) {
+function Hex({ q, r, s, content }) {
   const size = 50;
   const width = size * 2;
   const height = Math.sqrt(3) * size;
@@ -30,6 +30,10 @@ Hex.propTypes = {
 
 Hex.propTypes = {
   r: PropTypes.number
+};
+
+Hex.propTypes = {
+  s: PropTypes.number
 };
 
 Hex.propTypes = {
