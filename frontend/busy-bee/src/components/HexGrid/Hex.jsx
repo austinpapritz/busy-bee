@@ -1,7 +1,8 @@
 import './HexGrid.css';
+import PropTypes from 'prop-types';
 
-function Hex({ q, r, s, content }) {
-  const size = 50; // half the width of the hexagon
+function Hex({ q, r, content }) {
+  const size = 50;
   const width = size * 2;
   const height = Math.sqrt(3) * size;
   
@@ -21,5 +22,18 @@ function Hex({ q, r, s, content }) {
     </div>
   );
 }
+
+// PropTypes validation
+Hex.propTypes = {
+  q: PropTypes.number
+};
+
+Hex.propTypes = {
+  r: PropTypes.number
+};
+
+Hex.propTypes = {
+  content: PropTypes.string
+};
 
 export default Hex;

@@ -1,5 +1,6 @@
-import Hex from './Hex.jsx';
 import './HexGrid.css';
+import Hex from './Hex.jsx';
+import PropTypes from 'prop-types';
 
 function HexGrid({ radius }) {
   const hexes = [];
@@ -12,5 +13,9 @@ function HexGrid({ radius }) {
 
   return <div className="hex-grid">{hexes}</div>;
 }
+
+HexGrid.propTypes = {
+  radius: PropTypes.number
+};
 
 export default HexGrid;
