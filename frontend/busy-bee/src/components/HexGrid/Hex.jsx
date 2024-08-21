@@ -37,19 +37,12 @@ function Hex({ q, r, s, content, isBeeHere, onClick }) {
 
 // PropTypes validation
 Hex.propTypes = {
-  q: PropTypes.number
-};
-
-Hex.propTypes = {
-  r: PropTypes.number
-};
-
-Hex.propTypes = {
-  s: PropTypes.number
-};
-
-Hex.propTypes = {
-  content: PropTypes.string
+  q: PropTypes.number.isRequired,
+  r: PropTypes.number.isRequired,
+  s: PropTypes.number.isRequired,
+  content: PropTypes.string,
+  isBeeHere: PropTypes.bool,
+  onClick: PropTypes.func.isRequired
 };
 
 export default Hex;
