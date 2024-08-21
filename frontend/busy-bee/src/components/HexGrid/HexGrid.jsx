@@ -18,7 +18,7 @@ function HexGrid({ radius }) {
       const interval = setInterval(() => {
         setBeePosition(path[0]);
         setPath(path.slice(1));
-      }, 1000);
+      }, 250);
 
       return () => clearInterval(interval);
     }
@@ -45,22 +45,51 @@ function HexGrid({ radius }) {
   return <div className="hex-grid">{hexes}</div>;
 }
 
-function calculatePath(start, target) {
-  // Simple straight-line path calculation for now
-  const { q: q1, r: r1, s: s1 } = start;
-  const { q: q2, r: r2, s: s2 } = target;
-  
-  const path = [];
-  let current = { q: q1, r: r1, s: s1 };
 
-  while (current.q !== q2 || current.r !== r2 || current.s !== s2) {
-    const step = {
-      q: current.q + Math.sign(q2 - current.q),
-      r: current.r + Math.sign(r2 - current.r),
-      s: current.s + Math.sign(s2 - current.s),
-    };
-    path.push(step);
-    current = step;
+function lerp(a, b, t) {
+  return a + (b - a) * t;
+}
+
+function cubeLerp(a, b, t) {
+  return {
+    q: lerp(a.q, b.q, t),
+    r: lerp(a.r, b.r, t),
+    s: lerp(a.s, b.s, t),
+  };
+}
+
+function cubeRound(cube) {
+  let q = Math.round(cube.q);
+  let r = Math.round(cube.r);
+  let s = Math.round(cube.s);
+
+  const q_diff = Math.abs(q - cube.q);
+  const r_diff = Math.abs(r - cube.r);
+  const s_diff = Math.abs(s - cube.s);
+
+  if (q_diff > r_diff && q_diff > s_diff) {
+    q = -r - s;
+  } else if (r_diff > s_diff) {
+    r = -q - s;
+  } else {
+    s = -q - r;
+  }
+
+  return { q, r, s };
+}
+
+function calculatePath(start, target) {
+  const N = Math.max(
+    Math.abs(target.q - start.q),
+    Math.abs(target.r - start.r),
+    Math.abs(target.s - start.s)
+  );
+
+  const path = [];
+  for (let i = 1; i <= N; i++) {
+    const t = i / N;
+    const interpolated = cubeLerp(start, target, t);
+    path.push(cubeRound(interpolated));
   }
 
   return path;
