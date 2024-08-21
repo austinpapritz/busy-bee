@@ -6,9 +6,7 @@ import { TickProvider } from './context/TickContext.jsx';
 function App() {
   return (
     <TickProvider>
-      <div className="app">
-        <HexGrid radius={2} />
-      </div>
+      <HexGrid radius={3} />
     </TickProvider>
   );
 }
