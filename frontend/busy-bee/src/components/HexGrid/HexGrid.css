@@ -1,13 +1,19 @@
 /* HexGrid.css */
+body {
+  overflow: hidden;
+}
+
 .hex-grid {
-  position: relative;
-  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .hex {
   position: absolute;
   color: #fff;
-  background-color: #757373;
+  background-color: #424242;
   clip-path: polygon(27% 0%, 73% 2%, 97% 50%, 75% 100%, 25% 100%, 2% 50%);
   display: flex;
   align-items: center;
