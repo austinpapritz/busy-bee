@@ -14,7 +14,7 @@ body {
   position: absolute;
   color: #fff;
   background-color: #424242;
-  clip-path: polygon(25% 0%, 70% 0%, 97% 50%, 70% 97%, 25% 95%, 0% 50%);
+  clip-path: polygon(25% 0%, 74% 0%, 99% 50%, 74% 99%, 25% 99%, 0% 50%);
   display: flex;
   align-items: center;
   justify-content: center;
