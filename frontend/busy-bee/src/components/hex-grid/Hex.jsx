@@ -2,7 +2,7 @@ import React from 'react';
 import './HexGrid.css';
 import PropTypes from 'prop-types';
 
-function Hex({ q, r, s, content, isBeeHere }) {
+function Hex({ q, r, s, content, isBeeHere, onMouseEnter  }) {
   const size = 50;
   const width = size * 2;
   const height = Math.sqrt(3) * size;
@@ -27,6 +27,7 @@ function Hex({ q, r, s, content, isBeeHere }) {
         width: `${width}px`,
         height: `${height}px`,
       }}
+      onMouseEnter={() => onMouseEnter(q, r, s)}
     >
       {isBeeHere && <div style={beeStyle} />}
       {content}
@@ -41,6 +42,7 @@ Hex.propTypes = {
   s: PropTypes.number.isRequired,
   content: PropTypes.string,
   isBeeHere: PropTypes.bool,
+  onMouseEnter: PropTypes.func.isRequired,
 };
 
 export default Hex;

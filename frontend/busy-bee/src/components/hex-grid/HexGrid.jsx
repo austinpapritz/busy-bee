@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './HexGrid.css';
 import Hex from './Hex.jsx';
-import PropTypes from 'prop-types';
-
 
 function HexGrid() {
   const [beePosition, setBeePosition] = useState({ q: 0, r: 0, s: 0 });
@@ -23,22 +21,7 @@ function HexGrid() {
       Math.ceil(height / hexHeight)
     );
 
-    setRadius(calculatedRadius + 2); // Add some buffer to ensure full coverage
-  }, []);
-
-  const handleMouseMove = (event) => {
-    const { clientX, clientY } = event;
-    console.log('clientX', clientX);
-    const hex = pixelToHex(clientX, clientY);
-    setTargetHex(hex);
-  };
-
-  useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
+    setRadius(calculatedRadius + 2);
   }, []);
 
   useEffect(() => {
@@ -55,6 +38,10 @@ function HexGrid() {
     return () => clearInterval(interval);
   }, [targetHex, beePosition]);
 
+  const handleHexHover = (q, r, s) => {
+    setTargetHex({ q, r, s });
+  };
+
   const hexes = [];
   for (let q = -radius; q <= radius; q++) {
     for (let r = Math.max(-radius, -q - radius); r <= Math.min(radius, -q + radius); r++) {
@@ -67,6 +54,7 @@ function HexGrid() {
           s={s}
           content={`${q},${r},${s}`}
           isBeeHere={beePosition.q === q && beePosition.r === r && beePosition.s === s}
+          onMouseEnter={handleHexHover}
         />
       );
     }
@@ -74,21 +62,6 @@ function HexGrid() {
 
   return <div className="hex-grid">{hexes}</div>;
 }
-
-function pixelToHex(x, y) {
-  const size = 50; // This should match the size of your hexagon (half the width of the hexagon)
-  
-  // Adjust these offsets to center the grid or align it with the cursor as needed
-  const gridOffsetX = window.innerWidth / 2;
-  const gridOffsetY = window.innerHeight / 2;
-
-  // Calculate the q and r using the axial coordinate system
-  const q = ((x - gridOffsetX) * Math.sqrt(3) / 3 - (y - gridOffsetY) / 3) / size;
-  const r = (y - gridOffsetY) * 2 / 3 / size;
-
-  return cubeRound({ q, r, s: -q - r });
-}
-
 
 function lerp(a, b, t) {
   return a + (b - a) * t;
@@ -138,10 +111,5 @@ function calculatePath(start, target) {
 
   return path;
 }
-
-// PropTypes validation
-HexGrid.propTypes = {
-  radius: PropTypes.number
-};
 
 export default HexGrid;
