@@ -28,8 +28,8 @@ function HexGrid() {
 
   const handleMouseMove = (event) => {
     const { clientX, clientY } = event;
-    const hex = pixelToHex(clientX, clientY, radius);
-    console.log('hex', hex);
+    console.log('clientX', clientX);
+    const hex = pixelToHex(clientX, clientY);
     setTargetHex(hex);
   };
 
@@ -51,7 +51,7 @@ function HexGrid() {
       }
     };
 
-    const interval = setInterval(moveBee, 500);
+    const interval = setInterval(moveBee, 100);
     return () => clearInterval(interval);
   }, [targetHex, beePosition]);
 
@@ -75,15 +75,20 @@ function HexGrid() {
   return <div className="hex-grid">{hexes}</div>;
 }
 
-function pixelToHex(x, y, radius) {
-  const size = 50; // Hex size
-  const gridOffsetX = (window.innerWidth / 2) - (size * Math.sqrt(3) * radius / 2);
-  const gridOffsetY = (window.innerHeight / 2) - (size * 1.5 * radius / 2);
+function pixelToHex(x, y) {
+  const size = 50; // This should match the size of your hexagon (half the width of the hexagon)
+  
+  // Adjust these offsets to center the grid or align it with the cursor as needed
+  const gridOffsetX = window.innerWidth / 2;
+  const gridOffsetY = window.innerHeight / 2;
 
+  // Calculate the q and r using the axial coordinate system
   const q = ((x - gridOffsetX) * Math.sqrt(3) / 3 - (y - gridOffsetY) / 3) / size;
   const r = (y - gridOffsetY) * 2 / 3 / size;
+
   return cubeRound({ q, r, s: -q - r });
 }
+
 
 function lerp(a, b, t) {
   return a + (b - a) * t;
