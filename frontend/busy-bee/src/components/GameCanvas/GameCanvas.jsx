@@ -69,6 +69,8 @@ const GameCanvas = () => {
 
       for (let q = -cols; q < cols; q++) {
         for (let r = -rows; r < rows; r++) {
+          q =  q + .05;
+          r = r + .5;
           hexGrid.push({ q, r });
         }
       }
