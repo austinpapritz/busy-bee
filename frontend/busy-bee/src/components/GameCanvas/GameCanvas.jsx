@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 
-const BusyBeeGame = () => {
+const GameCanvas = () => {
   const canvasRef = useRef(null);
   const gameStateRef = useRef({
     bee: { x: 0, y: 0 },
@@ -149,4 +149,4 @@ const BusyBeeGame = () => {
   );
 };
 
-export default BusyBeeGame;
+export default GameCanvas;
