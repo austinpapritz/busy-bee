@@ -17,8 +17,6 @@ export const generateHexGrid = (width, height, hexSize) => {
 
   for (let q = -cols; q < cols; q++) {
     for (let r = -rows; r < rows; r++) {
-      q = q + 0.08;
-      r = r + 0.8;
       hexGrid.push({ q, r });
     }
   }
